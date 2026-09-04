@@ -1,0 +1,63 @@
+{
+  "name": "@svgfx/cli",
+  "version": "0.1.0",
+  "description": "Apply post-processing effects to any SVG from the terminal. Scanlines, bloom, glitch, halftone and more.",
+  "main": "./dist/cli.js",
+  "types": "./dist/cli.d.ts",
+  "bin": {
+    "svgfx": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "examples": "npm run build && ./examples/generate.sh",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "pretest": "npm run build",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "files": [
+    "dist",
+    "examples"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tool3/svgfx-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tool3/svgfx-cli/issues"
+  },
+  "homepage": "https://github.com/tool3/svgfx-cli#readme",
+  "keywords": [
+    "cli",
+    "svg",
+    "postprocessing",
+    "effects",
+    "filter",
+    "glitch",
+    "scanlines",
+    "bloom",
+    "halftone",
+    "duotone",
+    "terminal",
+    "nodejs"
+  ],
+  "author": "Tal Hayut",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@svgfx/postprocessing": "^0.2.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.37",
+    "@types/yargs": "^17.0.32",
+    "typescript": "^5.7.3",
+    "vitest": "^4.0.18"
+  }
+}

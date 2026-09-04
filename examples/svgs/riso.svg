@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160">
+  <title>Tones</title>
+  <defs>
+    <linearGradient id="ramp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#141414"/>
+    </linearGradient>
+    <radialGradient id="ball" cx="0.34" cy="0.28" r="0.78">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#9aa0a6"/>
+      <stop offset="1" stop-color="#26292d"/>
+    </radialGradient>
+  </defs>
+  
+  
+  
+  
+  
+<defs><filter id="svgfx-2uoy56-filter-0" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" in="SourceGraphic" result="svgfx-2uoy56-duotone-luminance-0"/><feComponentTransfer in="svgfx-2uoy56-duotone-luminance-0" result="svgfx-pass-0"><feFuncR type="table" tableValues="0.1686 1"/><feFuncG type="table" tableValues="0.2275 0.3529"/><feFuncB type="table" tableValues="0.4039 0.3725"/></feComponentTransfer><feComponentTransfer in="svgfx-pass-0" result="svgfx-pass-1"><feFuncR type="discrete" tableValues="0 0.3333 0.6667 1"/><feFuncG type="discrete" tableValues="0 0.3333 0.6667 1"/><feFuncB type="discrete" tableValues="0 0.3333 0.6667 1"/></feComponentTransfer><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="3" stitchTiles="stitch" seed="424" result="svgfx-2uoy56-grain-noise-2"/><feColorMatrix in="svgfx-2uoy56-grain-noise-2" type="saturate" values="0" result="svgfx-2uoy56-grain-mono-2"/><feComponentTransfer in="svgfx-2uoy56-grain-mono-2" result="svgfx-2uoy56-grain-level-2"><feFuncR type="linear" slope="0.4" intercept="0.3"/><feFuncG type="linear" slope="0.4" intercept="0.3"/><feFuncB type="linear" slope="0.4" intercept="0.3"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feBlend in="svgfx-2uoy56-grain-level-2" in2="svgfx-pass-1" mode="overlay" result="svgfx-2uoy56-grain-blend-2"/><feComposite in="svgfx-2uoy56-grain-blend-2" in2="svgfx-pass-1" operator="in" result="svgfx-out-2"/></filter></defs><g filter="url(#svgfx-2uoy56-filter-0)"><rect width="240" height="160" fill="#f5f2ec"/><circle cx="76" cy="70" r="46" fill="url(#ball)"/><rect x="142" y="28" width="74" height="78" rx="6" fill="#8d99ae"/><path d="M152 98 L179 46 L206 98 Z" fill="#3d405b"/><rect x="24" y="128" width="192" height="18" rx="3" fill="url(#ramp)"/></g></svg>
