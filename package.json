@@ -1,6 +1,6 @@
 {
   "name": "@svgfx/cli",
-  "version": "0.1.4",
+  "version": "0.4.4",
   "description": "Apply post-processing effects to any SVG from the terminal. Scanlines, bloom, glitch, halftone and more.",
   "main": "./dist/cli.js",
   "types": "./dist/cli.d.ts",
@@ -51,7 +51,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@svgfx/postprocessing": "^0.3.0",
+    "@svgfx/postprocessing": "^0.4.4",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
