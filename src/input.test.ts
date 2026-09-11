@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import { expand, isUrl, read } from './input'
 
 const seeded = (): string => {
-  const root = mkdtempSync(join(tmpdir(), 'svgfx-in-'))
+  const root = mkdtempSync(join(tmpdir(), 'pstfx-in-'))
   writeFileSync(join(root, 'b.svg'), '<svg id="b"/>')
   writeFileSync(join(root, 'a.svg'), '<svg id="a"/>')
   writeFileSync(join(root, 'notes.txt'), 'ignore me')
@@ -42,7 +42,7 @@ describe('expand', () => {
   })
 
   it('reports a directory with no svgs', () => {
-    const empty = mkdtempSync(join(tmpdir(), 'svgfx-empty-'))
+    const empty = mkdtempSync(join(tmpdir(), 'pstfx-empty-'))
     expect(() => expand([empty])).toThrow(/No .svg files found/)
   })
 })

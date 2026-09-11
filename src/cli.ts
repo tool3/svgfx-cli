@@ -9,7 +9,7 @@ import type { CliOptions } from './types'
 
 const createParser = () =>
   yargs(hideBin(process.argv))
-    .scriptName('svgfx')
+    .scriptName('pstfx')
     .usage('Usage: $0 [input...] [options]')
     .example('$0 logo.svg -e bloom', 'Apply one effect, print to stdout')
     .example('$0 logo.svg -p crt -o out.svg', 'Apply a preset, write to a file')
@@ -21,6 +21,7 @@ const createParser = () =>
     .example('$0 logo.svg -e "bloom:radius=8" -e "scanlines:gap=3"', 'Stack effects with options, in order')
     .example('$0 logo.svg -p crt --data-uri', 'Emit a data: URI for CSS or HTML')
     .example('$0 logo.svg -c effects.json', 'Read the effect stack from JSON')
+    .example('$0 card.svg -p crt --clip none', 'Let effects spill past a rounded frame')
     .example('$0 list', 'List every effect and preset')
 
     .command('list', 'List all effects and presets with their options', {}, () => listCommand())
@@ -77,6 +78,12 @@ const createParser = () =>
     .option('scope', {
       type: 'string',
       description: 'Id namespace, defaults to a hash of the input and effects',
+    })
+    .option('clip', {
+      type: 'string',
+      description: "Trim the result to the artwork's own frame so its silhouette is untouched",
+      choices: ['shape', 'none'],
+      default: 'shape',
     })
     .option('animate', {
       alias: 'a',

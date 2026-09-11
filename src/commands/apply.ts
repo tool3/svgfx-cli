@@ -1,12 +1,12 @@
 import { readFileSync } from 'node:fs'
 import { relative } from 'node:path'
-import { createPipeline, toDataUri } from '@svgfx/postprocessing'
+import { createPipeline, toDataUri } from 'pstfx'
 import { collect } from '../input'
 import { destination, write } from '../output'
 import { toSettings } from '../settings'
 import { fromConfig, toEffect } from '../spec'
 import type { CliOptions } from '../types'
-import type { Effect } from '@svgfx/postprocessing'
+import type { Effect } from 'pstfx'
 
 const gather = (options: CliOptions): readonly Effect[] => [
   ...(options.config === undefined

@@ -52,8 +52,8 @@ describe('parseSpec', () => {
     expect(() => parseSpec('bloom:radiuss=4')).toThrow(/no option "radiuss".*Did you mean radius/s)
   })
 
-  it('lists valid options for an effect that takes none', () => {
-    expect(() => parseSpec('xerox:size=2')).toThrow(/Valid: none/)
+  it('lists the valid options when the key is unknown', () => {
+    expect(() => parseSpec('xerox:size=2')).toThrow(/"xerox" has no option "size"\. Valid: threshold, grain/)
   })
 })
 
@@ -97,5 +97,64 @@ describe('enum options', () => {
   it('rejects a typo instead of silently falling back', () => {
     expect(() => parseSpec('scanlines:clip=shapee')).toThrow(/must be one of shape, viewport, got "shapee"/)
     expect(() => parseSpec('blur:axis=sideways')).toThrow(/must be one of both, horizontal, vertical/)
+  })
+})
+
+describe('preset overrides', () => {
+  it('reaches an effect inside a preset with a dot', () => {
+    expect(parseSpec('film:grain.amount=0.5').options).toEqual({ grain: { amount: 0.5 } })
+  })
+
+  it('collects several overrides for the same effect', () => {
+    expect(parseSpec('film:grain.amount=0.5,grain.size=2').options).toEqual({
+      grain: { amount: 0.5, size: 2 },
+    })
+  })
+
+  it('mixes shorthands with nested overrides', () => {
+    expect(parseSpec('crt:animate=true,scanlines.gap=6,vignette.amount=0.9').options).toEqual({
+      animate: true,
+      scanlines: { gap: 6 },
+      vignette: { amount: 0.9 },
+    })
+  })
+
+  it('accepts kebab-case at both levels', () => {
+    expect(parseSpec('newsprint:halftone.keep-source=true').options).toEqual({
+      halftone: { keepSource: true },
+    })
+  })
+
+  it('rejects an effect the preset does not contain', () => {
+    expect(() => parseSpec('film:scanlines.gap=3')).toThrow(
+      /"film" has no option "scanlines"\. Valid: contrast, bloom, grain, vignette/,
+    )
+  })
+
+  it('rejects an unknown option on a nested effect', () => {
+    expect(() => parseSpec('film:grain.nope=1')).toThrow(/effect "grain" has no option "nope"/)
+  })
+
+  it('explains that a bare effect name needs an option', () => {
+    expect(() => parseSpec('film:grain')).toThrow(/is an effect inside the preset/)
+  })
+
+  it('refuses to nest more than one level', () => {
+    expect(() => parseSpec('film:grain.amount.deep=1')).toThrow(/nests too deeply/)
+  })
+
+  it('validates enums against the owning effect, not the leaf name', () => {
+    expect(() => parseSpec('crt:scanlines.blend=soft-light')).toThrow(
+      /effect "scanlines" option "blend" must be one of multiply, overlay, screen, normal/,
+    )
+    expect(parseSpec('vhs:grain.blend=soft-light').options).toEqual({ grain: { blend: 'soft-light' } })
+  })
+
+  it('still rejects a nested path on a plain effect', () => {
+    expect(() => parseSpec('bloom:radius.deep=1')).toThrow(/takes a value, not a nested one/)
+  })
+
+  it('builds a preset whose recipe is actually tuned', () => {
+    expect(toEffect('film:grain.amount=0.5').name).toBe('film')
   })
 })

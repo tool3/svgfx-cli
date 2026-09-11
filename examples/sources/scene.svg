@@ -9,5 +9,5 @@
   <rect width="240" height="160" fill="url(#sky)"/>
   <circle cx="180" cy="46" r="26" fill="#ffd166"/>
   <path d="M0 130 L60 92 L110 130 L160 78 L240 130 L240 160 L0 160 Z" fill="#0b1526"/>
-  <text x="16" y="34" font-family="monospace" font-size="18" fill="#f7f7f2">svgfx &amp; co</text>
+  <text x="16" y="34" font-family="monospace" font-size="18" fill="#f7f7f2">pstfx &amp; co</text>
 </svg>

@@ -1,9 +1,10 @@
-import type { Effect, OutputFormat } from '@svgfx/postprocessing'
+import type { Effect, OutputFormat } from 'pstfx'
 
 export interface EffectMeta {
   readonly create: (options: Record<string, unknown>) => Effect
   readonly options: readonly string[]
   readonly summary: string
+  readonly nested?: Readonly<Record<string, readonly string[]>>
 }
 
 export interface EffectSpec {
@@ -31,6 +32,7 @@ export interface CliOptions {
   readonly seed?: string
   readonly prefix?: string
   readonly scope?: string
+  readonly clip: 'shape' | 'none'
   readonly animate: boolean
   readonly format: OutputFormat
   readonly quiet: boolean

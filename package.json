@@ -1,11 +1,11 @@
 {
-  "name": "@svgfx/cli",
+  "name": "pstfx-cli",
   "version": "0.1.4",
   "description": "Apply post-processing effects to any SVG from the terminal. Scanlines, bloom, glitch, halftone and more.",
   "main": "./dist/cli.js",
   "types": "./dist/cli.d.ts",
   "bin": {
-    "svgfx": "./dist/cli.js"
+    "pstfx": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
@@ -20,17 +20,14 @@
     "dist",
     "examples"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tool3/svgfx-cli.git"
+    "url": "https://github.com/tool3/pstfx-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/tool3/svgfx-cli/issues"
+    "url": "https://github.com/tool3/pstfx-cli/issues"
   },
-  "homepage": "https://github.com/tool3/svgfx-cli#readme",
+  "homepage": "https://github.com/tool3/pstfx-cli#readme",
   "keywords": [
     "cli",
     "svg",
@@ -51,7 +48,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@svgfx/postprocessing": "^0.3.0",
+    "pstfx": "^0.6.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

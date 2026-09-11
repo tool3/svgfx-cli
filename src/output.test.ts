@@ -41,18 +41,26 @@ describe('destination', () => {
 
 describe('write', () => {
   it('creates missing directories', () => {
-    const root = mkdtempSync(join(tmpdir(), 'svgfx-'))
+    const root = mkdtempSync(join(tmpdir(), 'pstfx-'))
     const target = join(root, 'nested', 'deep', 'out.svg')
     write(target, '<svg id="x"/>')
     expect(readFileSync(target, 'utf8')).toBe('<svg id="x"/>')
   })
 
   it('overwrites an existing file', () => {
-    const root = mkdtempSync(join(tmpdir(), 'svgfx-'))
+    const root = mkdtempSync(join(tmpdir(), 'pstfx-'))
     mkdirSync(join(root, 'a'))
     const target = join(root, 'a', 'out.svg')
     write(target, 'first')
     write(target, 'second')
     expect(readFileSync(target, 'utf8')).toBe('second')
+  })
+})
+
+describe('settings', () => {
+  it('passes the frame clip mode through to the library', async () => {
+    const { toSettings } = await import('./settings')
+    expect(toSettings({ clip: 'none', animate: true, format: 'preserve' } as never).clip).toBe('none')
+    expect(toSettings({ clip: 'shape', animate: true, format: 'preserve' } as never).clip).toBe('shape')
   })
 })
